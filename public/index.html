@@ -19,33 +19,33 @@
     </script>
 </head>
 <body class="bg-gradient-to-br from-indigo-500 to-purple-600 min-h-screen flex items-center justify-center p-4">
-    <div class="container max-w-4xl w-full bg-white rounded-2xl shadow-2xl overflow-hidden">
-        <div id="status" class="bg-gray-100 text-center py-2 text-gray-700 font-semibold">Connecting...</div>
-        <div class="grid md:grid-cols-2 gap-4 p-4">
-            <div class="space-y-4">
-                <div class="relative aspect-video bg-black rounded-lg overflow-hidden">
+    <div class="container max-w-6xl w-full bg-white rounded-2xl shadow-2xl overflow-hidden">
+        <div id="status" class="bg-gray-100 text-center py-3 text-gray-700 font-semibold text-lg">Connecting...</div>
+        <div class="grid lg:grid-cols-2 gap-6 p-6">
+            <div class="space-y-6">
+                <div class="relative aspect-[4/3] bg-black rounded-lg overflow-hidden">
                     <video id="localVideo" class="absolute inset-0 w-full h-full object-cover" autoplay muted playsinline></video>
-                    <span class="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-sm">You</span>
+                    <span class="absolute bottom-3 left-3 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm font-medium">You</span>
                 </div>
-                <div class="relative aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                <div class="relative aspect-[4/3] bg-gray-200 rounded-lg overflow-hidden">
                     <video id="remoteVideo" class="absolute inset-0 w-full h-full object-cover" autoplay playsinline></video>
-                    <span class="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-sm">Stranger</span>
+                    <span class="absolute bottom-3 left-3 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm font-medium">Stranger</span>
                 </div>
             </div>
             <div class="flex flex-col">
-                <div id="messages" class="flex-grow bg-gray-50 rounded-lg p-4 overflow-y-auto max-h-[400px] mb-4"></div>
+                <div id="messages" class="flex-grow bg-gray-50 rounded-lg p-4 overflow-y-auto max-h-[400px] mb-4 shadow-inner"></div>
                 <div class="flex gap-2">
-                    <input type="text" id="messageInput" class="flex-grow px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Type a message..." disabled>
-                    <button id="sendBtn" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/80 transition disabled:opacity-50" disabled>Send</button>
+                    <input type="text" id="messageInput" class="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Type a message..." disabled>
+                    <button id="sendBtn" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/80 transition disabled:opacity-50 font-medium" disabled>Send</button>
                 </div>
             </div>
         </div>
-        <div class="bg-gray-100 p-4 flex justify-between items-center">
-            <div class="space-x-2">
-                <button id="videoToggle" class="bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary/80 transition">Toggle Video</button>
-                <button id="audioToggle" class="bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary/80 transition">Toggle Audio</button>
+        <div class="bg-gray-100 p-6 flex flex-wrap justify-between items-center gap-4">
+            <div class="space-x-2 flex flex-wrap gap-2">
+                <button id="videoToggle" class="bg-secondary text-white px-6 py-3 rounded-lg hover:bg-secondary/80 transition font-medium">Toggle Video</button>
+                <button id="audioToggle" class="bg-secondary text-white px-6 py-3 rounded-lg hover:bg-secondary/80 transition font-medium">Toggle Audio</button>
             </div>
-            <button id="nextBtn" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary/80 transition">Next Person</button>
+            <button id="nextBtn" class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary/80 transition font-medium">Next Person</button>
         </div>
     </div>
     <script src="/socket.io/socket.io.js"></script>
