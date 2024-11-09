@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Video Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="status" class="status">Connecting...</div>
+        <div class="video-chat-container">
+            <div class="video-grid">
+                <div class="video-wrapper">
+                    <video id="localVideo" autoplay muted playsinline></video>
+                    <span class="video-label">You</span>
+                </div>
+                <div class="video-wrapper">
+                    <video id="remoteVideo" autoplay playsinline></video>
+                    <span class="video-label">Stranger</span>
+                </div>
+            </div>
+            <div id="chat" class="chat-container">
+                <div id="messages" class="messages"></div>
+                <div class="input-container">
+                    <input type="text" id="messageInput" placeholder="Type a message..." disabled>
+                    <button id="sendBtn" disabled>Send</button>
+                    <button id="nextBtn">Next Person</button>
+                </div>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="videoToggle">Toggle Video</button>
+            <button id="audioToggle">Toggle Audio</button>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="webrtc.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>
