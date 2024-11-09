@@ -4,34 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Video Chat</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#10B981',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    <div class="container">
-        <div id="status" class="status">Connecting...</div>
-        <div class="video-chat-container">
-            <div class="video-grid">
-                <div class="video-wrapper">
-                    <video id="localVideo" autoplay muted playsinline></video>
-                    <span class="video-label">You</span>
+<body class="bg-gradient-to-br from-indigo-500 to-purple-600 min-h-screen flex items-center justify-center p-4">
+    <div class="container max-w-4xl w-full bg-white rounded-2xl shadow-2xl overflow-hidden">
+        <div id="status" class="bg-gray-100 text-center py-2 text-gray-700 font-semibold">Connecting...</div>
+        <div class="grid md:grid-cols-2 gap-4 p-4">
+            <div class="space-y-4">
+                <div class="relative aspect-video bg-black rounded-lg overflow-hidden">
+                    <video id="localVideo" class="absolute inset-0 w-full h-full object-cover" autoplay muted playsinline></video>
+                    <span class="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-sm">You</span>
                 </div>
-                <div class="video-wrapper">
-                    <video id="remoteVideo" autoplay playsinline></video>
-                    <span class="video-label">Stranger</span>
+                <div class="relative aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                    <video id="remoteVideo" class="absolute inset-0 w-full h-full object-cover" autoplay playsinline></video>
+                    <span class="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-sm">Stranger</span>
                 </div>
             </div>
-            <div id="chat" class="chat-container">
-                <div id="messages" class="messages"></div>
-                <div class="input-container">
-                    <input type="text" id="messageInput" placeholder="Type a message..." disabled>
-                    <button id="sendBtn" disabled>Send</button>
-                    <button id="nextBtn">Next Person</button>
+            <div class="flex flex-col">
+                <div id="messages" class="flex-grow bg-gray-50 rounded-lg p-4 overflow-y-auto max-h-[400px] mb-4"></div>
+                <div class="flex gap-2">
+                    <input type="text" id="messageInput" class="flex-grow px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Type a message..." disabled>
+                    <button id="sendBtn" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/80 transition disabled:opacity-50" disabled>Send</button>
                 </div>
             </div>
         </div>
-        <div class="controls">
-            <button id="videoToggle">Toggle Video</button>
-            <button id="audioToggle">Toggle Audio</button>
+        <div class="bg-gray-100 p-4 flex justify-between items-center">
+            <div class="space-x-2">
+                <button id="videoToggle" class="bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary/80 transition">Toggle Video</button>
+                <button id="audioToggle" class="bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary/80 transition">Toggle Audio</button>
+            </div>
+            <button id="nextBtn" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary/80 transition">Next Person</button>
         </div>
     </div>
     <script src="/socket.io/socket.io.js"></script>
